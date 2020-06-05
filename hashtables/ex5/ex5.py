@@ -1,13 +1,25 @@
-# Your code here
-
+import os
 
 
 def finder(files, queries):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    cache = {}
+    result = []
 
+    for i in files:
+        tail = os.path.split(i)[-1]
+        # print(tail)
+        if tail not in cache:
+            cache[tail] = [i]
+        else:
+            cache[tail].append(i)
+        # print(cache)
+
+    for j in queries:
+        if j in cache:
+            # print(j)
+            result += cache[j]
+
+    print(result)
     return result
 
 
